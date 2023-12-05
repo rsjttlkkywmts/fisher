@@ -1,11 +1,14 @@
 from flask import Flask
 
+import config
+
 app = Flask(__name__)
 
 
 @app.route('/hello')
 def hello():
     return 'hello'
+
 
 @app.route('/book/search/<q>/<page>')
 def search(q, page):
@@ -24,4 +27,5 @@ def search(q, page):
         isbn_or_key = 'isbn'
     pass
 
-app.run()
+
+app.run(debug=config.DEBUG)
